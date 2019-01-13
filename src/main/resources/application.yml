@@ -1,0 +1,35 @@
+spring: 
+  application: 
+      name: sba
+  port: 8080
+  datasource: 
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/postgres
+      username: postgres
+      password: postgres
+      
+  jpa: 
+     hibernate: 
+        ddl-auto: none
+     properties:
+        hibernate: 
+          user_sql_comments: true
+          show_sql: true
+          format_sql: true
+          type: trace
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          
+  jackson: 
+    serialization: 
+      WRITE_DATES_AS_TIMESTAMPS: false
+  data: 
+    elasticsearch: 
+      cluster-nodes: localhost:9300
+      repositories:
+        enabled: true
+          
+liquibase: 
+  change-log: classpath:conf/liquibase-master.xml
+  
+server: 
+  port: 8081
